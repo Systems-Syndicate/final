@@ -19,7 +19,11 @@ On the computer, open a new terminal and run the following commands:
 
 `poetry run flask --app app run -p 3801 --debug --host=0.0.0.0`
 
-This will run locally on: `localhost:{number:4 digit}`
+This will run locally on: `localhost:{number:4 digit}` and on your local WiFi.
+
+> Please ensure you are running the server on your device, not a VM or a container.
+> i.e. windows should use powershell.
+
 
 To test if the server is running try: `localhost{number: digit}/health`
 
