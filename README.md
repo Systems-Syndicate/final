@@ -15,7 +15,7 @@ The computer will be running multiple terminal sessions to run the back-end and 
 ### Starting the Back-End Server
 On the computer, open a new terminal and run the following commands:
 
-`cd app-back-end\api`
+`cd app-back-end/api`
 
 `poetry run flask --app app run -p 3801 --debug --host=0.0.0.0`
 
@@ -26,7 +26,7 @@ To test if the server is running try: `localhost{number: digit}/health`
 ### Starting the Front-End Chessboard
 On the computer, open another terminal and run the following commands:
 
-`cd frontend\chessboard`
+`cd frontend/chessboard`
 
 `npx expo start` 
 
@@ -35,7 +35,7 @@ On the tablet device, scan the QR code generated in the terminal to open the app
 ### Starting the Front-End Mobile App
 On the computer, open another terminal and run the following commands:
 
-`cd frontend\phone`
+`cd frontend/phone`
 
 `npx expo start` 
 
