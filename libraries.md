@@ -12,6 +12,7 @@ This project used many open-source libaries from the node.js, and poetry library
 - ics = "^0.7.2"
 
 ### Frontend
+#### Phone
 - "@expo/vector-icons": "^14.0.2",
 - "@react-native-community/datetimepicker": "^8.2.0",
 - "@react-navigation/drawer": "^6.7.2",
