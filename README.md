@@ -65,16 +65,16 @@ The front-end chessboard contains multilple different interfaces, one for the ac
 
 Links to the important files can be found here:
 - [components/chessboard.tsx](frontend//chessboard//components//Chessboard.tsx): displays the basic chessboard grid on the device
-- [components/Lock.tsx](frontend//chessboard//components//lock.tsx): creates the personalised locking code
-- [components/Calendar.tsx](frontend//chessboard//components//calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
-- [components/ApiContext.tsx](frontend//chessboard//components//ApiContext.tsx): refreshes the calendar data from the database every second
+- [components/lock.tsx](frontend//chessboard//components//Lock.tsx): creates the personalised locking code
+- [components/calendar.tsx](frontend//chessboard//components//Calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
+- [components/apicontext.tsx](frontend//chessboard//components//ApiContext.tsx): refreshes the calendar data from the database every second
 
 ### Front-End Phone
 Finally, the front-end mobile application also consists of a main screen, which shows a schedule of the current user's events and has a button to add new events. Users can click on an existing event and edit the details, or delete it entirely.
 
 Links to the important files can be found here:
-- [hamburger/create_event.tsx](frontend//phone//hamburger//create_event.tsx): fetches the current user's events from the database, and includes an 'Add Event' button
-- [hamburger/create_event_android.js](frontend//phone//hamburger//create_event_android.gs): same as above, but works for Android devices
+- [hamburger/create_event.tsx](frontend/phone/app/(hamburger)/create_event.tsx): fetches the current user's events from the database, and includes an 'Add Event' button
+- [hamburger/create_event_android.js](frontend/phone/app/(hamburger)/create_event_android.js): same as above, but works for Android devices
 
 ## Attributes
 
