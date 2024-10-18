@@ -4,9 +4,9 @@ Day 'n Knight is a chessboard scheduling device, created by [Systems Syndicate](
 ## Running Day 'n Knight
 To run Day 'n Knight, you will need the following devices:
 - 1 tablet device (e.g. iPad, Samsung Galaxy Fold) for the chessboard with Expo Go application downloaded
-- 1 computer to host the back-end and chessboard front-end
-- 1 smartphone (to simulate a household member) with Expo Go application downloaded
-- 1 NFC chip, attached to a chess piece
+- 1 computer to host the backend, mobile and chessboard frontend
+- 1 smartphone per household member with Expo Go application downloaded
+- 1 NFC chip per household member, attached to a chess piece
 
 To begin, ensure all devices are connected to the same network (e.g. connect to a hotspot) - this allows all devices to connect to the IP address hosted on the computer.
 
