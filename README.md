@@ -1,5 +1,5 @@
 # Welcome to Day 'n Knight
-Day 'n Knight is a chessboard scheduling device, created by Systems Syndicate for DECO3801, Semester 2 2024. The project consists of two key parts, the chessboard device and the companion mobile application. The hardware uses NFC tags to distinguish between different users and display the corresponding users schedule on the chessboard. Overall, the aim of the project was to improve social connectedness and promote social spontaneity, whilst disgusing the device in an ambient way within the home.
+Day 'n Knight is a chessboard scheduling device, created by [Systems Syndicate](https://github.com/Systems-Syndicate) for DECO3801, Semester 2 2024. The project consists of two key parts, the chessboard device and the companion mobile application. The hardware uses NFC tags to distinguish between different users and display the corresponding users schedule on the chessboard. Overall, the aim of the project was to improve social connectedness and promote social spontaneity, whilst disgusing the device in an ambient way within the home.
 
 ## Running Day 'n Knight
 To run Day 'n Knight, you will need the following devices:
