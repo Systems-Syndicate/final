@@ -3,10 +3,10 @@ Day 'n Knight is a chessboard scheduling device, created by [Systems Syndicate](
 
 ## Running Day 'n Knight
 To run Day 'n Knight, you will need the following devices:
-- 1 tablet device (e.g. iPad, Android Galaxy Fold) for the chessboard with Expo Go application downloaded
-- 1 computer to host the back-end and chessboard front-end
-- 1 smartphone (to simulate a household member) with Expo Go application downloaded
-- 1 NFC chip, attached to a chess piece
+- 1 tablet device (e.g. iPad, Samsung Galaxy Fold) for the chessboard with Expo Go application downloaded
+- 1 computer to host the backend, mobile and chessboard frontend
+- 1 smartphone per household member with Expo Go application downloaded
+- 1 NFC chip per household member, attached to a chess piece
 
 To begin, ensure all devices are connected to the same network (e.g. connect to a hotspot) - this allows all devices to connect to the IP address hosted on the computer.
 
@@ -15,7 +15,7 @@ The computer will be running multiple terminal sessions to run the back-end and 
 ### Starting the Back-End Server
 On the computer, open a new terminal and run the following commands:
 
-`cd app-back-end/api`
+`cd backend/api`
 
 `poetry run flask --app app run -p 3801 --debug --host=0.0.0.0`
 
@@ -77,6 +77,7 @@ Links to the important files can be found here:
 - [hamburger/create_event_android.js](frontend/phone/app/(hamburger)/create_event_android.js): same as above, but works for Android devices
 
 ## Attributes
+Links to the libraries and packages used can be found in [libraries.md](libraries.md).
 
 ## Working Repositories
 Links to the working repositories, where the front-end and back-end were kept separate can be found below:
