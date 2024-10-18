@@ -79,12 +79,9 @@ export default function App() {
             color: colorScheme === 'dark' ? 'white' : DefaultTheme,
           }
         })}>
-          {/* <Drawer.Screen name="Home" component={HomeScreen} initialParams={{ dimensions }} /> */}
           <Drawer.Screen name="Create Event" component={CreateEvent} />
           <Drawer.Screen name="Create Event alt." component={DateTimePickerAndroid} />
-          <Drawer.Screen name="Monthly View" component={MonthlyView} />
           <Drawer.Screen name="Calendar" component={CalendarTimelineComponent} />
-          <Drawer.Screen name="Notifications" component={GetDimensions} initialParams={{ dimensions }} />
 
       </Drawer.Navigator>
     </ThemeProvider>
