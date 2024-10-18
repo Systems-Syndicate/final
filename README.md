@@ -65,8 +65,8 @@ The front-end chessboard contains multilple different interfaces, one for the ac
 
 Links to the important files can be found here:
 - [components/chessboard.tsx](frontend//chessboard//components//Chessboard.tsx): displays the basic chessboard grid on the device
-- [components/lock.tsx](frontend//chessboard//components//lock.tsx): creates the personalised locking code
-- [components/calendar.tsx](frontend//chessboard//components//calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
+- [components/Lock.tsx](frontend//chessboard//components//lock.tsx): creates the personalised locking code
+- [components/Calendar.tsx](frontend//chessboard//components//calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
 - [components/ApiContext.tsx](frontend//chessboard//components//ApiContext.tsx): refreshes the calendar data from the database every second
 
 ### Front-End Phone
