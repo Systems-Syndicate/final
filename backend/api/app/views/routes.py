@@ -50,6 +50,7 @@ def get_events(nfc):
     events = [{
         'uid': event.uid,
         'name': event.name,
+        'classification': event.classification,
         'begin': event.begin.strftime('%Y-%m-%d %H:%M:%S'),
         'end': event.end.strftime('%Y-%m-%d %H:%M:%S'),
         'description': event.description,
@@ -71,6 +72,14 @@ def add_event(nfc):
     ics_event.description = new_event.get('description', '')
     ics_event.location = new_event.get('location', '')
 
+    # Set visibility
+    visibility = new_event.get('visibility', 'PUBLIC').upper()
+    if visibility not in ['PUBLIC', 'PRIVATE', 'CONFIDENTIAL']:
+        # In your post you can set the visibility to PUBLIC, PRIVATE, or CONFIDENTIAL i.e. {'visibility': 'PRIVATE'}
+        return jsonify({'error': 'Invalid visibility'}), 400
+    ics_event.classification = visibility
+
+
     ics_event.uid = f'{ics_event.begin.strftime("%Y%m%d%H%M%S")}-{ics_event.name}'
 
     calendar.events.add(ics_event)
@@ -81,7 +90,7 @@ def add_event(nfc):
 @api.route('/events/<nfc>/<uid>', methods=['PUT'])
 def update_event(nfc, uid):
     calendar = get_calendar(nfc)
-    ics_event = find_event_by_uid(uid)
+    ics_event = find_event_by_uid(calendar, uid)
     if not ics_event:
         return jsonify({'error': 'Event not found'}), 404
     
@@ -91,6 +100,14 @@ def update_event(nfc, uid):
     ics_event.end = datetime.strptime(updated_event['end'], '%Y-%m-%d %H:%M:%S') if 'end' in updated_event else ics_event.end
     ics_event.description = updated_event.get('description', ics_event.description)
     ics_event.location = updated_event.get('location', ics_event.location)
+    
+    # Set visibility
+    visibility = updated_event.get('visibility', 'PUBLIC').upper()
+    if visibility not in ['PUBLIC', 'PRIVATE', 'CONFIDENTIAL']:
+        # In your post you can set the visibility to PUBLIC, PRIVATE, or CONFIDENTIAL i.e. {'visibility': 'PRIVATE'}
+        return jsonify({'error': 'Invalid visibility'}), 400
+    ics_event.classification = visibility
+
     save_calendar(calendar, f'data/{nfc}.ics')
     
     return jsonify({'message': 'Event updated successfully'}), 200
@@ -243,14 +260,15 @@ def convert_ics_to_events_all():
             continue
         calendar = get_calendar(user.nfcID)
         for event in calendar.events:
-            events.append({
-                'user': user.name,
-                'color': user.colour,
-                'id': event.uid if event.uid else user.nfcID,
-                'title': event.name if event.name else "No Title",
-                'start': event.begin.strftime('%Y-%m-%d %H:%M:%S'),
-                'end': event.end.strftime('%Y-%m-%d %H:%M:%S'),
-                'summary': event.description if event.description else "No Summary",
-                'location': event.location if event.location else "No Location",
-            })
+            if not event.classification or event.classification.upper() == 'PUBLIC':
+                events.append({
+                    'user': user.name,
+                    'color': user.colour,
+                    'id': event.uid if event.uid else user.nfcID,
+                    'title': event.name if event.name else "No Title",
+                    'start': event.begin.strftime('%Y-%m-%d %H:%M:%S'),
+                    'end': event.end.strftime('%Y-%m-%d %H:%M:%S'),
+                    'summary': event.description if event.description else "No Summary",
+                    'location': event.location if event.location else "No Location",
+                })
     return jsonify(events), 200
