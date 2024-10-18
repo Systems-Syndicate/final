@@ -15,7 +15,7 @@ The computer will be running multiple terminal sessions to run the back-end and 
 ### Starting the Back-End Server
 On the computer, open a new terminal and run the following commands:
 
-`cd app-back-end/api`
+`cd backend/api`
 
 `poetry run flask --app app run -p 3801 --debug --host=0.0.0.0`
 
@@ -77,6 +77,7 @@ Links to the important files can be found here:
 - [hamburger/create_event_android.js](frontend/phone/app/(hamburger)/create_event_android.js): same as above, but works for Android devices
 
 ## Attributes
+Links to the libraries and packages used can be found in [libraries.md](libraries.md).
 
 ## Working Repositories
 Links to the working repositories, where the front-end and back-end were kept separate can be found below:
