@@ -52,25 +52,25 @@ If you have issues running the front-end, run `npm install`.
 The back-end code consists of the API and the endpoints to write to the iCalendar files, which is backed up on an SQLAlchemy database. The code is organised into two sub-directories, `models` (containing the setup code for the database) and `views` (containing the endpoints to write to the iCalendar files).
 
 Links to these files can be found here:
-- [init.py](app-back-end\\api\\app\\__init__.py): initialises the database tables
-- [views/routes.py](app-back-end\api\app\views\routes.py): contains the code to create/edit/delete calendar events, save to the iCalendar file, and retrieve users based on their NFC id
-- [models/tables.py](app-back-end\api\app\models\tables.py): creates the columns for the database
+- [init.py](backend//api//app//__init__.py): initialises the database tables
+- [views/routes.py](backend//api//app//views//routes.py): contains the code to create/edit/delete calendar events, save to the iCalendar file, and retrieve users based on their NFC id
+- [models/tables.py](backend//api//app//models//tables.py): creates the columns for the database
 
 ### Front-End Chessboard
 The front-end chessboard contains multilple different interfaces, one for the actual chessboard display and one for the calendar display. The chessboard is best viewed when run on a tablet or an Android Galaxy Fold and then can be connected to an external monitor via a HDMI cable.
 
 Links to the important files can be found here:
-- [components/chessboard.tsx](frontend\chessboard\components\Chessboard.tsx): displays the basic chessboard grid on the device
-- [components/lock.tsx](frontend\chessboard\components\lock.tsx): creates the personalised locking code
-- [components/calendar.tsx](frontend\chessboard\components\calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
-- [components/ApiContext.tsx](frontend\chessboard\components\ApiContext.tsx): refreshes the calendar data from the database every second
+- [components/chessboard.tsx](frontend//chessboard//components//Chessboard.tsx): displays the basic chessboard grid on the device
+- [components/lock.tsx](frontend//chessboard//components//lock.tsx): creates the personalised locking code
+- [components/calendar.tsx](frontend//chessboard//components//calendar.tsx): displays the calendar as a monthly, weekly or daily view with the users corresponding to the placed NFC tags
+- [components/ApiContext.tsx](frontend//chessboard//components//ApiContext.tsx): refreshes the calendar data from the database every second
 
 ### Front-End Phone
 Finally, the front-end mobile application also consists of a main screen, which shows a schedule of the current user's events and has a button to add new events. Users can click on an existing event and edit the details, or delete it entirely.
 
 Links to the important files can be found here:
-- [hamburger/create_event.tsx](frontend\phone\hamburger\create_event.tsx): fetches the current user's events from the database, and includes an 'Add Event' button
-- [hamburger/create_event_android.js](frontend\phone\hamburger\create_event_android.gs): same as above, but works for Android devices
+- [hamburger/create_event.tsx](frontend//phone//hamburger//create_event.tsx): fetches the current user's events from the database, and includes an 'Add Event' button
+- [hamburger/create_event_android.js](frontend//phone//hamburger//create_event_android.gs): same as above, but works for Android devices
 
 ## Attributes
 
