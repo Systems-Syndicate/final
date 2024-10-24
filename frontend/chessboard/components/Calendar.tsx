@@ -225,21 +225,23 @@ const CalendarTimelineComponent: React.FC = () => {
           </Modal>
         </View>
       ) : (
-        <CalendarList
-          pastScrollRange={6}
-          futureScrollRange={12}
-          horizontal={true}
-          pagingEnabled={true}
-          scrollEnabled={true}
-          current={new Date().toISOString().split("T")[0]}
-          style={styles.calendar}
-          calendarWidth={BOARD_SIZE}
-          calendarHeight={BOARD_SIZE}
-          onDayPress={handleDayPress}
-          markingType={"multi-dot"}
-          theme={theme}
-          markedDates={markedDates} // Use updated markedDates
-        />
+        <>
+          <CalendarList
+            pastScrollRange={6}
+            futureScrollRange={12}
+            horizontal={true}
+            pagingEnabled={true}
+            scrollEnabled={true}
+            current={new Date().toISOString().split("T")[0]}
+            style={styles.calendar}
+            calendarWidth={BOARD_SIZE}
+            calendarHeight={BOARD_SIZE}
+            onDayPress={handleDayPress}
+            markingType={"multi-dot"}
+            theme={theme}
+            markedDates={markedDates} // Use updated markedDates
+          />
+        </>
       )}
     </View>
   );

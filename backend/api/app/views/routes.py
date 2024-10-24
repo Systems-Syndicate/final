@@ -200,10 +200,11 @@ def get_active():
 
 @api.route('/active_users', methods=['GET'])
 def get_active_users():
+    active = Active.query.filter_by(isOn=True).all()
     colours = []
-    for user in User.query.all():
-        if Active.query.filter_by(userID=user.userID).first().isOn:
-            colours.append(user.colour)
+    for act in active:
+        user = User.query.filter_by(userID=act.userID).first()
+        colours.append(user.colour)
     return jsonify(colours, len(colours)), 200
 
 @api.route('/active/<nfc>', methods=['GET'])

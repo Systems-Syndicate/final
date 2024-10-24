@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, FlatList, Dimensions } from "react-native";
 import { useApi } from "@/components/ApiContext";
 import Lock from "@/components/Lock"; // Assume Lock is the lock component
+import UserIndicator from "@/components/UserIndicator"; // Assume UserIndicator is the user indicator component
 
 const { width, height } = Dimensions.get("window");
 const GRID_SIZE = 8;
@@ -63,6 +64,7 @@ const ChessGrid = () => {
             style={styles.grid}
           />
           <Lock />
+          <UserIndicator />
         </>
       )}
     </View>
