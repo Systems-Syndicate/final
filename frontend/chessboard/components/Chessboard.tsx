@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black"
+    backgroundColor: "black",
   },
   grid: {
     width: BOARD_SIZE, // Set the grid size to be the board size

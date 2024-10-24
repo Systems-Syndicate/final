@@ -8,15 +8,34 @@ const GRID_SIZE = 8; // Chessboard grid size (8x8)
 const PIN_GRID_SIZE = 4; // Lock pattern grid size (4x4)
 const SQUARE_SIZE = BOARD_SIZE / GRID_SIZE; // Size of each chess square
 
-const CORRECT_PIN_SEQUENCE = [18, 19, 26, 27]; // Example: correct pattern based on the 4x4 center squares
+function pinCodeToIndex(pin: number) {
+  const baseRow = 2; // Starting row in the 8x8 grid for the 4x4 block
+  const baseCol = 2; // Starting column in the 8x8 grid for the 4x4 block
+
+  // Calculate the row and column in the 8x8 grid
+  const row = baseRow + Math.floor(pin / 4);
+  const col = baseCol + (pin % 4);
+
+  // Calculate the index in the 8x8 grid
+  return row * 8 + col;
+}
+
+const PIN_SEQUENCE = [0, 5, 10, 15]; // Example: correct pattern based on the 4x4 center squares
+
+const CORRECT_PIN_SEQUENCE = PIN_SEQUENCE.map(pinCodeToIndex); // Convert pin code to index
 
 const Lock: React.FC = () => {
   const { setLoggedIn } = useApi(); // Access setLoggedIn from the context
   const [selectedSquares, setSelectedSquares] = useState<number[]>([]); // Track selected squares
+  const [flashingSquares, setFlashingSquares] = useState<number[]>([]); // Track flashing squares
 
   // Handle square press
   const handleSquarePress = (index: number) => {
-    if (!selectedSquares.includes(index) && selectedSquares.length < 4) {
+    if (
+      !selectedSquares.includes(index) &&
+      selectedSquares.length < 4 &&
+      flashingSquares.length === 0
+    ) {
       const newSelectedSquares = [...selectedSquares, index];
       setSelectedSquares(newSelectedSquares);
 
@@ -28,7 +47,7 @@ const Lock: React.FC = () => {
         ) {
           setLoggedIn(true); // Unlock if correct
         } else {
-          resetPin(); // Reset if incorrect
+          triggerDoubleFlash(newSelectedSquares); // Flash the selected squares if incorrect
         }
       }
     }
@@ -37,10 +56,30 @@ const Lock: React.FC = () => {
   // Reset the selected pin sequence
   const resetPin = () => {
     setSelectedSquares([]);
+    setFlashingSquares([]); // Reset the flashing state
+  };
+
+  // Trigger double flash effect when the pin is incorrect
+  const triggerDoubleFlash = (squares: number[]) => {
+    setFlashingSquares(squares); // Set the selected squares to flash
+    setTimeout(() => {
+      setFlashingSquares([]); // End first flash after 500ms
+      setTimeout(() => {
+        setFlashingSquares(squares); // Start second flash after 200ms
+        setTimeout(() => {
+          setFlashingSquares([]); // End second flash after another 500ms
+          resetPin(); // Reset the pin after flashing twice
+        }, 500); // Second flash duration (500ms)
+      }, 200); // Delay between flashes (200ms)
+    }, 500); // First flash duration (500ms)
   };
 
   // Generate the color for each square in the lock pattern based on its index
   const generateSquareColor = (index: number) => {
+    if (flashingSquares.includes(index)) {
+      return "red"; // Flash red only on the selected squares
+    }
+
     // Get the position of the square within the 8x8 chessboard grid
     const row = Math.floor(index / GRID_SIZE);
     const col = index % GRID_SIZE;

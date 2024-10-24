@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Appbar } from "react-native-paper";
 import {
   View,
   StyleSheet,
@@ -41,7 +42,8 @@ interface EventsByDate {
   [key: string]: Event[];
 }
 
-const backendURL = process.env.EXPO_PUBLIC_API_URL || "http://192.168.64.223:3801";
+const backendURL =
+  process.env.EXPO_PUBLIC_API_URL || "http://192.168.64.223:3801";
 
 const fetchEvents = async (): Promise<Event[]> => {
   try {
@@ -183,7 +185,9 @@ const CalendarTimelineComponent: React.FC = () => {
     <View style={styles.container}>
       {selectedDay ? (
         <View style={styles.timelineContainer}>
-          <Button title="Back to Calendar" onPress={handleBackToCalendar} />
+          <Appbar.Header>
+            <Appbar.BackAction onPress={handleBackToCalendar} />
+          </Appbar.Header>
           <CalendarProvider date={currentDate} showTodayButton>
             <WeekCalendar firstDay={1} />
             <TimelineList
@@ -207,6 +211,9 @@ const CalendarTimelineComponent: React.FC = () => {
                   {parseDateToTimeString(selectedEvent?.end || "")}
                 </Text>
                 <Text>{selectedEvent?.summary || "No summary available."}</Text>
+                <Text>
+                  {selectedEvent?.location || "No location available."}
+                </Text>
                 <TouchableOpacity
                   style={styles.closeButton}
                   onPress={handleCloseModal}
@@ -298,10 +305,10 @@ const theme = {
   indicatorColor: "#48BFE3", // Loading indicator color
   textDayFontWeight: "300", // Font weight of day numbers
   textMonthFontWeight: "bold", // Font weight of month in header
-  textDayHeaderFontWeight: "600", // Font weight of day headers (Sun, Mon, etc.)
+  textDayHeaderFontWeight: "6", // Font weight of day headers (Sun, Mon, etc.)
   textDayFontSize: relativeFontSize(15), // Font size of day numbers
   textMonthFontSize: relativeFontSize(24), // Font size of month
-  textDayHeaderFontSize: relativeFontSize(18), // Font size of day headers
+  textDayHeaderFontSize: relativeFontSize(12), // Font size of day headers
 };
 
 export default CalendarTimelineComponent;
