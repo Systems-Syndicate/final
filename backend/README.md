@@ -37,7 +37,7 @@ Install python and pip
 
 Install poetry
 
-- `pip3 install poetry icalendar flask flask_sqlalchemy ics flask-cors`
+- `pip3 install poetry icalendar flask flask_sqlalchemy ics flask-cors pytz`
 
 - `poetry install --no-root`
 

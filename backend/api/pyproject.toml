@@ -11,6 +11,7 @@ Flask = "^3.0.3"
 icalendar = "^5.0.13"
 flask-cors = "^5.0.0"
 ics = "^0.7.2"
+pytz = "^2024.2"
 
 
 [tool.poetry.dev-dependencies]

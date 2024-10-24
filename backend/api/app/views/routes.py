@@ -5,6 +5,7 @@ from datetime import datetime
 from app.models import db
 from app.models.tables import Calendar, Active, User
 from uuid import uuid4 as uuid
+import pytz
 
 api = Blueprint('api', __name__)
 
@@ -67,10 +68,17 @@ def add_event(nfc):
     new_event = request.json
     ics_event = Event()
     ics_event.name = new_event['name']
-    ics_event.begin = datetime.strptime(new_event['begin'], '%Y-%m-%d %H:%M:%S')
-    ics_event.end = datetime.strptime(new_event['end'], '%Y-%m-%d %H:%M:%S')
+    begin_utc = datetime.strptime(new_event['begin'], '%Y-%m-%d %H:%M:%S')
+    end_utc = datetime.strptime(new_event['end'], '%Y-%m-%d %H:%M:%S')
     ics_event.description = new_event.get('description', '')
     ics_event.location = new_event.get('location', '')
+
+    # Convert to Brisbane time
+    brisbane_tz = pytz.timezone('Australia/Brisbane')
+    begin_brisbane = begin_utc.astimezone(brisbane_tz)
+    end_brisbane = end_utc.astimezone(brisbane_tz)
+    ics_event.begin = begin_brisbane
+    ics_event.end = end_brisbane
 
     # Set visibility
     visibility = new_event.get('visibility', 'PUBLIC').upper()
