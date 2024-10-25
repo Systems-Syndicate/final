@@ -33,14 +33,14 @@ const Lock: React.FC = () => {
   const handleSquarePress = (index: number) => {
     if (
       !selectedSquares.includes(index) &&
-      selectedSquares.length < 4 &&
+      selectedSquares.length < PIN_SEQUENCE.length &&
       flashingSquares.length === 0
     ) {
       const newSelectedSquares = [...selectedSquares, index];
       setSelectedSquares(newSelectedSquares);
 
       // Check if the selected sequence matches the correct pin
-      if (newSelectedSquares.length === 4) {
+      if (newSelectedSquares.length === PIN_SEQUENCE.length) {
         if (
           JSON.stringify(newSelectedSquares) ===
           JSON.stringify(CORRECT_PIN_SEQUENCE)

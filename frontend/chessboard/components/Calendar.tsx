@@ -310,7 +310,7 @@ const theme = {
   textDayHeaderFontWeight: "6", // Font weight of day headers (Sun, Mon, etc.)
   textDayFontSize: relativeFontSize(15), // Font size of day numbers
   textMonthFontSize: relativeFontSize(24), // Font size of month
-  textDayHeaderFontSize: relativeFontSize(12), // Font size of day headers
+  textDayHeaderFontSize: relativeFontSize(5), // Font size of day headers
 };
 
 export default CalendarTimelineComponent;
